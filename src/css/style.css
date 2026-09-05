@@ -184,7 +184,6 @@ nav a {
   object-fit: contain;
 }
 
-/* Subtle Divider Line */
 .product-card__divider {
   border: none;
   height: 2px;
@@ -206,7 +205,6 @@ nav a {
   letter-spacing: var(--letter-spacing-body);
 }
 
-/* Same-line Row for Title & Price Pill */
 .product-card__row {
   display: flex;
   justify-content: space-between;
@@ -233,7 +231,6 @@ nav a {
   white-space: nowrap;
 }
 
-/* Full-Width Footer */
 footer {
   width: 100%;
   background-color: var(--primary-green);
@@ -248,7 +245,6 @@ footer p {
   letter-spacing: var(--letter-spacing-body);
 }
 
-/* Responsive Scaling & Layout Reflow */
 @media (max-width: 900px) {
   header {
     padding: 1rem 2rem;
