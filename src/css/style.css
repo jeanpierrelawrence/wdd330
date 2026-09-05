@@ -231,6 +231,7 @@ nav a {
   white-space: nowrap;
 }
 
+/* Footer */
 footer {
   width: 100%;
   background-color: var(--primary-green);
