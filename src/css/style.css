@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. DESIGN TOKENS & BASE RESET
+   ========================================================================== */
 :root {
   /* Colors */
   --bg-main: #F1FFFA;
@@ -12,7 +15,7 @@
   --font-title: 36px;
   --font-hero: 64px;
 
-  /* Spacing & Tight Layout */
+  /* Spacing & Lettering */
   --letter-spacing-body: 0.5px;
   --letter-spacing-title: -1.5px;
   --line-height-tight: 1.15;
@@ -47,6 +50,9 @@ a {
   color: var(--primary-green);
 }
 
+/* ==========================================================================
+   2. GLOBAL HEADER & FOOTER
+   ========================================================================== */
 header {
   display: flex;
   justify-content: space-between;
@@ -93,7 +99,58 @@ nav a {
   width: 25px;
 }
 
-/* Hero Section */
+footer {
+  width: 100%;
+  background-color: var(--primary-green);
+  color: var(--bg-main);
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+footer p {
+  font-size: 0.875rem;
+  color: #ffffff;
+  letter-spacing: var(--letter-spacing-body);
+}
+
+/* ==========================================================================
+   3. REUSABLE UI COMPONENTS (BUTTONS & BADGES)
+   ========================================================================== */
+button,
+.btn {
+  font-family: var(--font-family);
+  font-size: var(--font-price);
+  font-weight: 700;
+  color: var(--primary-green);
+  background-color: var(--accent-mint);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  font-size: var(--font-body);
+}
+
+button:hover,
+.btn:hover {
+  opacity: 0.9;
+}
+
+button:active,
+.btn:active {
+  transform: scale(0.98);
+}
+
+.card__brand {
+  font-size: 0.9rem;
+  color: var(--primary-green);
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-body);
+}
+
+/* ==========================================================================
+   4. HOME PAGE STYLES
+   ========================================================================== */
 .hero {
   padding: 0 5%;
   margin-bottom: 4rem;
@@ -113,7 +170,6 @@ nav a {
   object-position: bottom;
 }
 
-/* Mission Heading */
 .mission {
   padding: 0 5%;
   margin: 4rem 0 6rem 0;
@@ -128,7 +184,6 @@ nav a {
   letter-spacing: -0.02em;
 }
 
-/* Product Grid Section */
 .products {
   padding: 0 5%;
   margin-bottom: 4rem;
@@ -150,7 +205,6 @@ nav a {
   list-style: none;
 }
 
-/* Product Card */
 .product-card {
   border: 3px solid var(--primary-green);
   border-radius: var(--radius-pill);
@@ -198,13 +252,6 @@ nav a {
   padding: 0 0.25rem;
 }
 
-.card__brand {
-  font-size: 0.9rem;
-  color: var(--primary-green);
-  font-weight: 700;
-  letter-spacing: var(--letter-spacing-body);
-}
-
 .product-card__row {
   display: flex;
   justify-content: space-between;
@@ -231,21 +278,92 @@ nav a {
   white-space: nowrap;
 }
 
-/* Footer */
-footer {
+/* ==========================================================================
+   5. PRODUCT DETAIL PAGE STYLES
+   ========================================================================== */
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  padding: 0 5%;
+  margin: 8rem 0 8rem 0;
+}
+
+.product-detail__image-outline {
+  border: 3px solid var(--primary-green);
+  border-radius: var(--radius-pill);
+  padding: 2.5rem;
+  background-color: transparent;
+}
+
+.product-detail__image-bg {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: var(--radius-pill);
   width: 100%;
-  background-color: var(--primary-green);
-  color: var(--bg-main);
-  text-align: center;
-  padding: 2.5rem 1rem;
+  height: 420px;
 }
 
-footer p {
-  font-size: 0.875rem;
-  color: #ffffff;
-  letter-spacing: var(--letter-spacing-body);
+.product-detail__image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.15);
+  max-width: 110%;
+  max-height: 110%;
+  object-fit: contain;
+  pointer-events: none;
 }
 
+.product-detail__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.product-detail__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product__color-badge {
+  background-color: #ffffff;
+  border-radius: var(--radius-pill);
+  padding: 1rem 2rem;
+  font-size: var(--font-body);
+  font-weight: 400;
+  color: var(--primary-green);
+}
+
+.product__title {
+  font-size: var(--font-hero);
+  color: var(--primary-green);
+  letter-spacing: -4px;
+  font-weight: 600;
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+}
+
+.product__price {
+  font-size: var(--font-title);
+  color: var(--primary-green);
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-title);
+  margin-bottom: 2rem;
+}
+
+.product__description {
+  font-size: var(--font-title);
+  color: var(--primary-green);
+  letter-spacing: var(--letter-spacing-title);
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
 @media (max-width: 900px) {
   header {
     padding: 1rem 2rem;
@@ -279,6 +397,19 @@ footer p {
   .product-card__price-badge {
     align-self: flex-start;
   }
+
+  .product-detail {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .product-detail__image-bg {
+    height: 300px;
+  }
+
+  .product__title {
+    font-size: 38px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -299,7 +430,8 @@ footer p {
 
   .hero,
   .mission,
-  .products {
+  .products,
+  .product-detail {
     padding: 0 3%;
   }
 
