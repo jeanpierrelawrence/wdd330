@@ -364,9 +364,6 @@ button:active,
 /* ==========================================================================
    6. RESPONSIVE MEDIA QUERIES
    ========================================================================== */
-/* ==========================================================================
-   6. RESPONSIVE MEDIA QUERIES (VARIABLE-DRIVEN)
-   ========================================================================== */
 @media (max-width: 900px) {
   :root {
     --font-hero: 42px;
@@ -437,7 +434,7 @@ button:active,
   }
 
   .logo img {
-    width: 80px; /* Scaled down ~45% from 150px desktop size */
+    width: 80px;
   }
 
   nav ul {
@@ -463,7 +460,6 @@ button:active,
     height: 220px;
   }
 
-  /* Structural adjustment: Pointing description specifically to standard body token */
   .product__description {
     font-size: var(--font-body);
     letter-spacing: var(--letter-spacing-body);
