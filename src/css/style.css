@@ -22,6 +22,7 @@
 
   /* Shapes */
   --radius-pill: 50px;
+  --pill-padding: 1rem 2rem;
 }
 
 * {
@@ -125,7 +126,7 @@ button,
   background-color: var(--accent-mint);
   border: none;
   border-radius: var(--radius-pill);
-  padding: 1rem 2rem;
+  padding: var(--pill-padding);
   cursor: pointer;
   transition: opacity 0.2s ease, transform 0.1s ease;
   font-size: var(--font-body);
@@ -273,7 +274,7 @@ button:active,
   font-size: var(--font-price);
   color: var(--primary-green);
   font-weight: 700;
-  padding: 1rem 1.5rem;
+  padding: var(--pill-padding);
   border-radius: var(--radius-pill);
   white-space: nowrap;
 }
@@ -331,7 +332,7 @@ button:active,
 .product__color-badge {
   background-color: #ffffff;
   border-radius: var(--radius-pill);
-  padding: 1rem 2rem;
+  padding: var(--pill-padding);
   font-size: var(--font-body);
   font-weight: 400;
   color: var(--primary-green);
@@ -340,8 +341,7 @@ button:active,
 .product__title {
   font-size: var(--font-hero);
   color: var(--primary-green);
-  letter-spacing: -4px;
-  font-weight: 600;
+  letter-spacing: -2px;
   line-height: 1.05;
   margin-bottom: 0.5rem;
 }
@@ -364,11 +364,24 @@ button:active,
 /* ==========================================================================
    6. RESPONSIVE MEDIA QUERIES
    ========================================================================== */
+/* ==========================================================================
+   6. RESPONSIVE MEDIA QUERIES (VARIABLE-DRIVEN)
+   ========================================================================== */
 @media (max-width: 900px) {
+  :root {
+    --font-hero: 42px;
+    --font-title: 28px;
+    --font-price: 20px;
+  }
+
   header {
     padding: 1rem 2rem;
     gap: 1.5rem;
     margin: 1.5rem 3%;
+  }
+
+  .logo img {
+    width: 100px;
   }
 
   nav ul {
@@ -377,11 +390,6 @@ button:active,
 
   .hero__image-wrapper {
     height: 380px;
-  }
-
-  .mission h1,
-  .mission p {
-    font-size: 38px;
   }
 
   .product-card {
@@ -401,27 +409,35 @@ button:active,
   .product-detail {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+    margin: 3rem 0;
   }
 
   .product-detail__image-bg {
     height: 300px;
   }
-
-  .product__title {
-    font-size: 38px;
-  }
 }
 
 @media (max-width: 600px) {
+  :root {
+    --font-hero: 32px;
+    --font-title: 24px;
+
+    --pill-padding: 0.75rem 1.5rem;
+  }
+
   header {
     flex-wrap: wrap;
-    justify-content: center;
-    padding: 1rem;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
     gap: 1rem;
   }
 
   .logo {
     flex: initial;
+  }
+
+  .logo img {
+    width: 80px; /* Scaled down ~45% from 150px desktop size */
   }
 
   nav ul {
@@ -432,12 +448,7 @@ button:active,
   .mission,
   .products,
   .product-detail {
-    padding: 0 3%;
-  }
-
-  .mission h1,
-  .mission p {
-    font-size: 28px;
+    padding: 0 4%;
   }
 
   .product-list {
@@ -450,5 +461,11 @@ button:active,
 
   .product-card__image-container {
     height: 220px;
+  }
+
+  /* Structural adjustment: Pointing description specifically to standard body token */
+  .product__description {
+    font-size: var(--font-body);
+    letter-spacing: var(--letter-spacing-body);
   }
 }
