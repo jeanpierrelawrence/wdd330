@@ -3,13 +3,14 @@
    ========================================================================== */
 :root {
   /* Colors */
-  --bg-main: #F1FFFA;
-  --accent-mint: #CCFCCB;
-  --primary-green: #4C774F;
-  --text-dark: #464E47;
+  --bg-main: #f1fffa;
+  --accent-mint: #ccfccb;
+  --primary-green: #4c774f;
+  --text-dark: #464e47;
 
   /* Typography */
-  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    sans-serif;
   --font-body: 16px;
   --font-price: 24px;
   --font-title: 36px;
@@ -128,7 +129,9 @@ button,
   border-radius: var(--radius-pill);
   padding: var(--pill-padding);
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.1s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.1s ease;
   font-size: var(--font-body);
 }
 
