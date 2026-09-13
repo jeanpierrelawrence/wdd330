@@ -33,3 +33,29 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+// Retrieve cart from localStorage and sum quantities
+export function getCartCount() {
+  const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
+  return Array.isArray(cartItems)
+    ? cartItems.reduce((total, item) => total + (item.Quantity || 1), 0)
+    : 0;
+}
+
+// Update text and trigger pop animation
+export function updateCartCountBadge() {
+  const badge = document.querySelector(".cart-count");
+  if (!badge) return;
+
+  const count = getCartCount();
+  badge.textContent = count;
+
+  if (count > 0) {
+    badge.classList.remove("hide");
+    badge.classList.remove("pop");
+    void badge.offsetWidth; 
+    badge.classList.add("pop");
+  } else {
+    badge.classList.add("hide");
+  }
+}
