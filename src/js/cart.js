@@ -69,7 +69,7 @@ function cartItemTemplate(item) {
     </div>
 
     <button class="cart-card__remove" data-id="${item.Id}" aria-label="Remove item">
-      <img src="../public/images/bin.svg" alt="Remove item" />
+      <img src="/images/bin.svg" alt="Remove item" />
     </button>
 
     <div class="cart-card__quantity-controls">
