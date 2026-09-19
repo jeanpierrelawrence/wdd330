@@ -67,6 +67,7 @@ export async function loadTemplate(path) {
 }
 
 export function renderWithTemplate(template, parentElement, data, callback) {
+  if (!parentElement) return;
   parentElement.innerHTML = template;
   if (callback) {
     callback(data);
