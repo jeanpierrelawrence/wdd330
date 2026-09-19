@@ -1,6 +1,8 @@
 import { getLocalStorage } from "./utils.mjs";
 import { updateCartCountBadge } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
+loadHeaderFooter();
 updateCartCountBadge();
 
 function renderCartContents() {

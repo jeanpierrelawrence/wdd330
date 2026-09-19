@@ -1,4 +1,7 @@
 import { updateCartCountBadge } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+
+loadHeaderFooter();
 
 updateCartCountBadge();
 

@@ -59,3 +59,27 @@ export function updateCartCountBadge() {
     badge.classList.add("hide");
   }
 }
+
+export async function loadTemplate(path) {
+  const res = await fetch(path);
+  if (!res.ok) throw new Error(`Failed to load template at ${path}`);
+  return await res.text();
+}
+
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.innerHTML = template;
+  if (callback) {
+    callback(data);
+  }
+}
+
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("/partials/header.html");
+  const footerTemplate = await loadTemplate("/partials/footer.html");
+
+  const headerElement = document.querySelector("#main-header");
+  const footerElement = document.querySelector("#main-footer");
+
+  renderWithTemplate(headerTemplate, headerElement, null, updateCartCountBadge);
+  renderWithTemplate(footerTemplate, footerElement);
+}
