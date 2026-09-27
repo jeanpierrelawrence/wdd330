@@ -104,22 +104,21 @@ export default class CheckoutProcess {
     try {
       const services = new ExternalServices();
       const res = await services.checkout(json);
-      console.log("Order submitted successfully:", res);
 
       setLocalStorage("so-cart", []);
 
-      formElement.reset();
-
-      this.list = [];
-      this.calculateItemSummary();
-      this.calculateOrderTotal();
-
-      updateCartCountBadge();
-
+      window.location.href = "/checkout/success.html";
+      
       return res;
     } catch (err) {
-      console.error("Checkout submission failed:", err);
-      throw err;
+      console.error("Checkout failed:", err);
+      
+      if (err.name === "servicesError") {
+        const errorMessages = Object.values(err.message).join("\n");
+        alert(`Order Submission Error:\n${errorMessages}`);
+      } else {
+        alert("An unexpected error occurred. Please check your information and try again.");
+      }
     }
   }
 }
