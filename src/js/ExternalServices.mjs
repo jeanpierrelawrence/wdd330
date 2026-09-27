@@ -1,4 +1,5 @@
-const baseURL = import.meta.env.VITE_SERVER_URL || "https://wdd330-backend-osp8.onrender.com/";
+const baseURL =
+  import.meta.env.VITE_SERVER_URL || "https://wdd330-backend-osp8.onrender.com/";
 
 function convertToJson(res) {
   if (res.ok) {
@@ -8,9 +9,8 @@ function convertToJson(res) {
   }
 }
 
-export default class ProductData {
-  constructor() {
-  }
+export default class ExternalServices {
+  constructor() {}
 
   async getData(category) {
     const response = await fetch(`${baseURL}products/search/${category}`);
@@ -22,5 +22,17 @@ export default class ProductData {
     const response = await fetch(`${baseURL}product/${id}`);
     const data = await convertToJson(response);
     return data.Result;
+  }
+
+  async checkout(payload) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    };
+    const response = await fetch(`${baseURL}checkout`, options);
+    return await convertToJson(response);
   }
 }

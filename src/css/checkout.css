@@ -1,0 +1,191 @@
+/* ==========================================================================
+   CHECKOUT PAGE STYLES (src/css/checkout.css)
+   ========================================================================== */
+
+.products h2 {
+  font-size: var(--font-title);
+  color: var(--primary-green);
+  letter-spacing: var(--letter-spacing-title);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  margin-bottom: 2rem;
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+#checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  border: 2px solid var(--primary-green);
+  border-radius: var(--radius-pill);
+  padding: 2rem;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-section h3 {
+  font-size: var(--font-price);
+  font-weight: 800;
+  color: var(--primary-green);
+  letter-spacing: var(--letter-spacing-title);
+  margin: 0;
+  padding-bottom: 0.5rem;
+}
+
+.form-row {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-row--2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-row--3 {
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+#checkout-form label {
+  font-size: var(--font-body);
+  font-weight: 700;
+  color: var(--primary-green);
+  letter-spacing: var(--letter-spacing-body);
+}
+
+#checkout-form input {
+  font-family: var(--font-family);
+  font-size: var(--font-body);
+  letter-spacing: var(--letter-spacing-body);
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--accent-mint);
+  border-radius: var(--radius-pill);
+  background-color: var(--bg-main);
+  color: var(--primary-green);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#checkout-form input:focus {
+  border-color: var(--primary-green);
+}
+
+.order-summary {
+  background-color: var(--primary-green);
+  color: #ffffff;
+  border-radius: var(--radius-pill);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: sticky;
+  top: 2rem;
+}
+
+.order-summary h3 {
+  font-size: var(--font-price);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: var(--letter-spacing-title);
+  margin: 0;
+  padding-bottom: 0.75rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-body);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: var(--letter-spacing-body);
+}
+
+.summary-row span:last-child {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.order-summary hr {
+  border: none;
+  height: 2px;
+  background-color: var(--accent-mint);
+  border-radius: var(--radius-pill);
+  margin: 0.25rem 0;
+  opacity: 0.5;
+}
+
+.summary-total {
+  font-size: var(--font-price);
+  font-weight: 800;
+  color: var(--accent-mint);
+  letter-spacing: var(--letter-spacing-title);
+}
+
+.summary-total span:last-child {
+  color: var(--accent-mint);
+}
+
+.order-summary .btn-checkout {
+  width: 100%;
+  padding: var(--pill-padding);
+  font-size: var(--font-body);
+  font-weight: 800;
+  color: var(--primary-green);
+  background-color: var(--accent-mint);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  margin-top: 0.5rem;
+}
+
+.order-summary .btn-checkout:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+.order-summary .btn-checkout:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 850px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-row--2,
+  .form-row--3 {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary {
+    padding: 1.75rem 1.5rem;
+    border-radius: var(--radius-pill);
+  }
+}

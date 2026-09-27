@@ -82,30 +82,37 @@ function cartItemTemplate(item) {
 
 document.querySelector(".product-list").addEventListener("click", (e) => {
   const target = e.target;
-  const id = target.dataset.id;
-  if (!id) return;
-
-  const rawCart = getLocalStorage("so-cart") || [];
-
-  if (target.classList.contains("cart-card__remove")) {
+  
+  const removeBtn = target.closest(".cart-card__remove");
+  if (removeBtn) {
+    const id = removeBtn.dataset.id;
+    const rawCart = getLocalStorage("so-cart") || [];
+    
     const updatedCart = rawCart.filter((item) => item.Id !== id);
     setLocalStorage("so-cart", updatedCart);
-  } else if (target.classList.contains("btn-plus")) {
-    const itemToAdd = rawCart.find((item) => item.Id === id);
-    if (itemToAdd) rawCart.push(itemToAdd);
-    setLocalStorage("so-cart", rawCart);
-  } else if (target.classList.contains("btn-minus")) {
-    const index = rawCart.findIndex((item) => item.Id === id);
-    if (index !== -1) {
-      rawCart.splice(index, 1);
-    }
-    setLocalStorage("so-cart", rawCart);
-  } else {
+
+    renderCartContents();
+    updateCartCountBadge();
     return;
   }
 
-  renderCartContents();
-  updateCartCountBadge();
+  const qtyBtn = target.closest(".btn-qty");
+  if (qtyBtn) {
+    const id = qtyBtn.dataset.id;
+    const rawCart = getLocalStorage("so-cart") || [];
+
+    if (qtyBtn.classList.contains("btn-plus")) {
+      const itemToAdd = rawCart.find((item) => item.Id === id);
+      if (itemToAdd) rawCart.push(itemToAdd);
+    } else if (qtyBtn.classList.contains("btn-minus")) {
+      const index = rawCart.findIndex((item) => item.Id === id);
+      if (index !== -1) rawCart.splice(index, 1);
+    }
+
+    setLocalStorage("so-cart", rawCart);
+    renderCartContents();
+    updateCartCountBadge();
+  }
 });
 
 renderCartContents();

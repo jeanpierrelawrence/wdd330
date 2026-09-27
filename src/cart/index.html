@@ -6,7 +6,7 @@
     <title>Sleep Outside | Cart</title>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/cart.css" />
-    <link rel="shortcut icon" href="../public/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
     <script src="../js/cart.js" type="module"></script>
   </head>
 
@@ -17,7 +17,18 @@
       <section class="products">
         <h2>My Cart</h2>
 
-        <ul class="product-list product-list--cart"></ul>
+        <div class="cart-layout">
+          <ul class="product-list product-list--cart"></ul>
+
+          <div class="cart-footer hide">
+            <h3>Summary</h3>
+            <div class="cart-summary__row">
+              <span>Subtotal</span>
+              <p class="cart-total">$0.00</p>
+            </div>
+            <a href="/checkout/index.html" class="btn btn-checkout">Checkout</a>
+          </div>
+        </div>
       </section>
     </main>
 
